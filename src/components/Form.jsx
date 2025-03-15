@@ -15,8 +15,9 @@ export default function Form() {
     confirmPass: yup.string().oneOf([yup.ref("pass"), null], "La contraseña debe de coincidir")
   })
 
-  const {register,handleSubmit, formState:{errors}} = useForm({
-    resolver: yupResolver(schema)
+  const {register,handleSubmit, formState:{errors, isValid}} = useForm({
+    resolver: yupResolver(schema), 
+    mode: "onChange"
   })
   function onSubmit(data){
     console.log(data)
@@ -42,7 +43,7 @@ export default function Form() {
         <p>{errors.pass?.message}</p>
         <input type="password" placeholder='Confirmar contraseña' {...register("confirmPass")}/>
         <p>{errors.confirmPass?.message}</p>
-        <button type='submit'>Registrar</button>
+        <button type='submit' disabled={!isValid}>Registrar</button>
       </form>
     </div>
   )
