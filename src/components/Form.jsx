@@ -2,8 +2,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom';
 
 export default function Form() {
+  const navigate = useNavigate();
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Nombre requerido"),
@@ -19,8 +21,11 @@ export default function Form() {
     resolver: yupResolver(schema), 
     mode: "onChange"
   })
+  
   function onSubmit(data){
     console.log(data)
+    localStorage.setItem('userData', JSON.stringify(data))
+    navigate('/login')
   }
 
   return (
