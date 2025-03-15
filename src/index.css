@@ -109,3 +109,27 @@ p {
   align-self: flex-start;
   margin-left: 5%;
 }
+
+.perfil-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn{
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.25s;
+}
